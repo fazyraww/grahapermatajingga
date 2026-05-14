@@ -1,0 +1,426 @@
+
+        /* Override primary color for GPJ */
+        :root {
+            --primary: #E67E22;
+            --primary-dark: #D35400;
+            --pj-orange: #E67E22;
+        }
+
+        /* Hero Swiper Slider */
+        .hero-luxury-wrap,
+        .hero-swiper {
+            height: 100vh !important;
+            min-height: 700px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-content>* {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Distinct elegant starting positions */
+        [data-effect="fade"] .slide-content>* {
+            transform: translateY(40px);
+        }
+
+        [data-effect="slide"] .slide-content>* {
+            transform: translateX(-50px);
+        }
+
+        [data-effect="flip"] .slide-content>* {
+            transform: scale(0.9) translateY(20px);
+        }
+
+        .swiper-slide-active .slide-content>* {
+            opacity: 1;
+            transform: translate(0, 0) scale(1) !important;
+        }
+
+        /* Staggered Reveal Delays for a 'Premium Waterfall' effect */
+        .swiper-slide-active .slide-content>*:nth-child(1) {
+            transition-delay: 0.4s;
+        }
+
+        .swiper-slide-active .slide-content>*:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .swiper-slide-active .slide-content>*:nth-child(3) {
+            transition-delay: 0.8s;
+        }
+
+        .badge-premium {
+            display: inline-block;
+            padding: 8px 25px;
+            background: rgba(230, 126, 34, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            border-radius: 50px;
+        }
+
+        /* Swiper Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 60px !important;
+            height: 60px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            color: #fff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.5rem !important;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--primary) !important;
+            border-color: var(--primary);
+        }
+
+        /* Mobile Sidebar Menu */
+        .nav-minimal {
+            display: block;
+            padding: 12px 0;
+            text-decoration: none;
+            color: #222;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-minimal:hover,
+        .nav-minimal:active,
+        .nav-minimal.active {
+            color: #E67E22 !important;
+        }
+
+        transform: translateX(5px);
+        }
+
+        [aria-expanded="true"] .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Navbar scrolled brand text fix */
+        .navbar-luxury.scrolled .brand-text-sub {
+            color: #222 !important;
+        }
+
+        /* Mobile responsive overrides */
+        @media (max-width: 991.98px) {
+            .navbar-luxury .container {
+                position: relative;
+                justify-content: flex-end !important;
+                min-height: 50px;
+            }
+
+            .navbar-brand-center {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                z-index: 1;
+            }
+
+            .brand-text-sub {
+                font-size: 0.7rem !important;
+                letter-spacing: 1px !important;
+                white-space: nowrap !important;
+            }
+
+            .navbar-brand img,
+            .navbar-brand-center img {
+                height: 42px !important;
+                margin-bottom: 3px !important;
+            }
+
+            .navbar-toggler {
+                position: relative;
+                z-index: 2;
+                padding: 8px !important;
+            }
+
+            .navbar-toggler i {
+                font-size: 1.25rem !important;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            .navbar-luxury.scrolled .navbar-toggler i {
+                color: #E67E22 !important;
+            }
+        }
+
+        /* Stat counter styles */
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Hero Pagination Centering */
+        .hero-pagination-wrap {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99;
+            width: auto;
+        }
+
+        .hero-pagination-inner {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* Kurangi gap */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            padding: 8px 25px;
+            /* Kurangi padding */
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-num {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            /* Kurangi ukuran font */
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-num.active {
+            color: #fff;
+            transform: scale(1.3);
+            text-shadow: 0 0 15px var(--primary);
+        }
+
+        .hero-progress-track {
+            width: 60px;
+            /* Kurangi lebar garis */
+            height: 2px;
+            /* Kurangi tinggi garis */
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .hero-progress-bar {
+            height: 100%;
+            background: #ffffff;
+            width: 33.33%;
+            /* Default start for slide 01 */
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Desktop Adjustment for Statistics */
+        @media (min-width: 992px) {
+            .stats-desktop-only {
+                padding-left: 210px !important;
+                margin-top: 120px !important;
+            }
+        }
+
+        /* Close Button with White Circle Background (As Requested) */
+        .btn-close-promo {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            padding: 0;
+            color: #333;
+        }
+
+        .btn-close-promo i {
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .btn-close-promo:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: #f8f9fa;
+            color: #E67E22;
+        }
+
+        /* Ensure standard close buttons also look premium */
+        .btn-close {
+            background-color: #ffffff !important;
+            opacity: 1 !important;
+            border-radius: 50% !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+            background-size: 10px !important;
+            border: 2px solid #fff !important;
+            filter: none !important;
+        }
+
+        .promo-overlay-link {
+            position: absolute;
+            bottom: 14.5%;
+            left: 30.5%;
+            width: 39%;
+            height: 10%;
+            z-index: 10;
+            cursor: pointer;
+            border-radius: 15px;
+            /* background: rgba(255,0,0,0.2); /* For debugging position */
+        }
+
+        @media (max-width: 767px) {
+            .btn-close-promo {
+                width: 22px;
+                height: 22px;
+            }
+
+            .btn-close-promo i {
+                font-size: 9px;
+            }
+
+            #promoModal .modal-dialog {
+                margin: 4vh auto;
+                max-width: 85% !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* Custom smooth transition */
+                transition: transform 3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out !important;
+            }
+
+            /* Zoom-in effect when showing, zoom-out when hiding */
+            #promoModal.fade:not(.show) .modal-dialog {
+                transform: scale(0.8) translateY(20px) !important;
+                opacity: 0 !important;
+            }
+
+            #promoModal.fade.show .modal-dialog {
+                transform: scale(1) translateY(0) !important;
+                opacity: 1 !important;
+            }
+
+            #promoModal .promo-img-container {
+                display: inline-block;
+                max-height: 75vh;
+            }
+
+            #promoModal img {
+                max-height: 75vh !important;
+                width: auto !important;
+                max-width: 100%;
+                display: block;
+                object-fit: contain;
+            }
+
+            .promo-overlay-link {
+                bottom: 4%;
+                left: 10%;
+                width: 80%;
+                height: 8%;
+            }
+        }
+
+        /* --- Masterpiece Product Cards --- */
+        .masterpiece-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+            overflow: hidden;
+        }
+
+        .card-img-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .masterpiece-card .card-img-top {
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feature-icon-box {
+            width: 40px;
+            height: 40px;
+            background: #FFF3E0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #E67E22;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        /* --- FAQ Accordion Customization (Clean & Premium) --- */
+        #faqGPJ .accordion-button:not(.collapsed),
+        #faqGPJ .accordion-button:not(.collapsed):focus {
+            color: #E67E22 !important;
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            box-shadow: none !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+            /* Garis sedikit lebih tegas */
+            outline: none !important;
+            padding-bottom: 10px !important;
+        }
+
+        #faqGPJ .accordion-collapse,
+        #faqGPJ .accordion-body {
+            border: none !important;
+            box-shadow: none !important;
+            padding-top: 10px !important;
+            color: #000000 !important;
+            /* Warna teks jawaban hitam pekat */
+        }
+
+        #faqGPJ .accordion-button:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        /* Hilangkan border biru default pada item */
+        #faqGPJ .accordion-item {
+            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+            border-radius: 15px !important;
+            margin-bottom: 15px !important;
+            overflow: hidden;
+        }
+
+        #faqGPJ .accordion-button {
+            border-radius: 15px !important;
+        }
+    
