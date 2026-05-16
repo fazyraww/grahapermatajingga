@@ -78,7 +78,7 @@ class RequestPasswordReset extends BaseRequestPasswordReset
         ) {
             Notification::make()
                 ->title('Akun ini belum punya akses admin.')
-                ->body('Pastikan akun sudah dibuat melalui halaman register admin atau diberi akses admin.')
+                ->body('Pastikan akun sudah dibuat di menu Admin User dan opsi akses admin sudah aktif.')
                 ->danger()
                 ->send();
 
@@ -252,6 +252,6 @@ class RequestPasswordReset extends BaseRequestPasswordReset
 
     public function getHeading(): string
     {
-        return $this->codeSent ? 'Masukkan kode reset' : 'Forgot password';
+        return $this->codeSent ? 'Masukkan kode reset' : 'Lupa password';
     }
 }

@@ -1,33 +1,52 @@
-*.log
-.DS_Store
+# === Laravel Framework ===
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/public/fonts-manifest.dev.json
+/storage/*.key
+/storage/pail
+
+# === Environment & Secrets ===
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
+.env.production.example
+
+# === IDE & Editor ===
 /.codex
 /.cursor/
 /.idea
 /.nova
-/.phpunit.cache
 /.vscode
 /.zed
-/auth.json
-/node_modules
-/public/build
-/public/fonts-manifest.dev.json
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+/.phpactor.json
 _ide_helper.php
-Homestead.json
-Homestead.yaml
+
+# === Testing ===
+/.phpunit.cache
+.phpunit.result.cache
+
+# === OS Files ===
+.DS_Store
 Thumbs.db
+
+# === Logs ===
+*.log
+storage/logs/*.log
+
+# === InfinityFree / Legacy Deployment ===
 test_server.php
 unzip.php
+info.php
 vendor-core.zip
 vendor-deps.zip
-.env.production
-.env.production.example
+vendor.zip
+upload-siap.zip
+scratch/
+
+# === Misc ===
+Homestead.json
+Homestead.yaml
+/auth.json

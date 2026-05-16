@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "gpj/grahapermatajingga",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Website perumahan Graha Permata Jingga - Situbondo",
+    "keywords": ["perumahan", "real-estate", "situbondo"],
     "license": "MIT",
     "require": {
         "php": "^8.3",
@@ -75,7 +75,7 @@
         }
     },
     "config": {
-        "optimize-autoloader": false,
+        "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {

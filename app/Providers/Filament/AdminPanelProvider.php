@@ -19,6 +19,7 @@ use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Support\HtmlString;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\View\PanelsRenderHook;
@@ -41,7 +42,12 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode()
             ->defaultThemeMode(ThemeMode::Light)
             ->favicon(asset('static/image/logo.png'))
-            ->brandLogo(asset('static/image/logo.png'))
+            ->brandLogo(fn(): HtmlString => new HtmlString(
+                '<span class="gpj-brand-logo">' .
+                    '<img class="gpj-brand-logo-image" src="' . e(asset('static/image/logo.png')) . '" alt="Graha Permata Jingga">' .
+                    '<span class="gpj-brand-wordmark">GRAHA PERMATA JINGGA</span>' .
+                '</span>'
+            ))
             ->brandLogoHeight('3.25rem')
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth('full')

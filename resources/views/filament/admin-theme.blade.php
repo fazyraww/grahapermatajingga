@@ -23,6 +23,7 @@
     }
 
     .fi-simple-layout {
+        min-height: 100svh !important;
         background:
             linear-gradient(135deg, rgba(24, 24, 27, .74), rgba(200, 95, 18, .50)),
             url("{{ asset('static/image/hero_entrance.png') }}") center / cover fixed !important;
@@ -31,6 +32,7 @@
     .fi-simple-main-ctn {
         min-height: 100svh;
         align-items: center !important;
+        justify-content: center !important;
         padding: 1.25rem !important;
     }
 
@@ -118,8 +120,68 @@
     .fi-logo {
         display: flex !important;
         align-items: center !important;
-        gap: .75rem;
+        gap: 0;
         min-width: 0;
+    }
+
+    .fi-sidebar-header-logo-ctn,
+    .fi-topbar-start {
+        min-width: 0;
+    }
+
+    .fi-sidebar-header-logo-ctn > a,
+    .fi-topbar-start > a {
+        display: inline-flex !important;
+        align-items: center !important;
+        min-width: 0;
+        max-width: 100%;
+        text-decoration: none !important;
+    }
+
+    .gpj-brand-logo {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .gpj-brand-logo-image {
+        flex: 0 0 auto;
+        height: 100%;
+        max-height: 48px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .gpj-brand-wordmark {
+        display: inline-block;
+        max-width: 11.5rem;
+        margin-inline-start: .65rem;
+        overflow: hidden;
+        color: #111111 !important;
+        font-family: Inter, Poppins, "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+        font-size: .82rem;
+        font-weight: 600;
+        line-height: 1.12;
+        letter-spacing: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+            opacity .3s ease,
+            transform .3s ease,
+            max-width .3s ease,
+            margin-inline-start .3s ease;
+    }
+
+    .fi-simple-main .gpj-brand-logo {
+        justify-content: center;
+    }
+
+    .fi-simple-main .gpj-brand-wordmark {
+        display: none !important;
     }
 
     .fi-sidebar .fi-logo img,
@@ -343,7 +405,23 @@
         min-width: 0;
     }
 
-    @media (max-width: 640px) {
+    @media (min-width: 1024px) {
+        .fi-body-has-sidebar-collapsible-on-desktop:not(:has(.fi-main-ctn-sidebar-open)) .fi-topbar-start .gpj-brand-wordmark {
+            max-width: 0;
+            margin-inline-start: 0;
+            opacity: 0;
+            transform: translateX(-.25rem);
+        }
+    }
+
+    @media (max-width: 1023px) {
+        .fi-sidebar .gpj-brand-wordmark {
+            max-width: 10rem;
+            font-size: .74rem;
+        }
+    }
+
+    @media (max-width: 768px) {
         .fi-simple-main-ctn {
             align-items: center !important;
             justify-content: center !important;
@@ -352,7 +430,9 @@
         }
 
         .fi-simple-main {
-            width: min(100%, 23rem) !important;
+            width: min(calc(100vw - 2rem), 28rem) !important;
+            max-height: calc(100svh - 2rem);
+            overflow-y: auto;
             border-radius: .9rem !important;
             margin-inline: auto !important;
         }

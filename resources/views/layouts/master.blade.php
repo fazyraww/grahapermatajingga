@@ -4,54 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@yield('meta_description', 'Graha Permata Jingga – Perumahan modern eksklusif di Situbondo. Hunian mewah, asri, dan strategis dengan fasilitas kelas dunia.')">
+    <meta name="keywords" content="perumahan situbondo, rumah dijual situbondo, graha permata jingga, rumah subsidi situbondo, rumah komersial situbondo">
+    <meta name="author" content="Graha Permata Jingga">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="@yield('title', 'Graha Permata Jingga – The Singapore Of Situbondo')">
+    <meta property="og:description" content="@yield('meta_description', 'Perumahan modern eksklusif di Situbondo dengan fasilitas kelas dunia.')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ asset('static/image/hero_entrance.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('static/image/logo.png') }}">
     <title>@yield('title', 'Graha Permata Jingga – The Singapore Of Situbondo')</title>
-
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tracking Pixels (Placeholders as per CitraLand Stack) -->
-    <script type="text/javascript">
-        // Microsoft Clarity
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(s)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "XXXXXXX");
-
-        // Facebook Pixel
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            }; if (!f._fbq) f._fbq = n;
-            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
-        }(window,
-            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'XXXXXXX'); fbq('track', 'PageView');
-
-        // TikTok Pixel
-        !function (w, d, t) {
-            w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "trackSelf", "untrackSelf"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)ttq.setAndDefer(e, ttq.methods[n]); return e }, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n; var o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.src = i + "?sdkid=" + e + "&lib=" + t; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a) };
-            ttq.load('XXXXXXX'); ttq.page();
-        }(window, document, 'ttq');
-    </script>
-
-    <!-- Core Libraries (CitraLand Match) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <!-- Core Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -64,11 +35,6 @@
 </head>
 
 <body class="antialiased overflow-x-hidden">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <!-- Navigation -->
     <x-navbar />
 
@@ -80,26 +46,12 @@
     <!-- Footer -->
     <x-footer />
 
-    <!-- JavaScript Frameworks & Libraries (CitraLand Match) -->
+    <!-- JavaScript Frameworks & Libraries -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
-
-    <!-- GSAP Premium Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <!-- Vendors -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Landbot Live Chat Placeholder -->
-    <script SameSite="None; Secure" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
-    <script>
-        var myLandbot = new Landbot.Livechat({
-            configUrl: 'https://chats.landbot.io/v3/H-XXXXXXX/index.json',
-        });
-    </script>
 
     <!-- Navbar Scroll Behavior & Animations -->
     <script>
@@ -137,7 +89,7 @@
     <!-- WhatsApp Floating -->
     <div class="wa-container">
         <div class="wa-bubble" id="waBubble">Halo, ada yang bisa <strong id="waAgentName">...</strong> bantu?</div>
-        <a href="#" class="wa-float" id="waFloatBtn" target="_blank">
+        <a href="#" class="wa-float" id="waFloatBtn" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -161,7 +113,7 @@
     <!-- ===== CONTACT PICKER MODAL ===== -->
     <div id="contactPickerModal" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.6); backdrop-filter:blur(6px); align-items:center; justify-content:center;">
         <div style="background:#fff; border-radius:28px; padding:32px 28px; max-width:400px; width:92%; position:relative; box-shadow:0 30px 60px rgba(0,0,0,0.3);" id="cpInner">
-            <button onclick="closeContactPicker()" style="position:absolute; top:16px; right:18px; background:rgba(0,0,0,0.06); border:none; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; color:#555; display:flex; align-items:center; justify-content:center;">&times;</button>
+            <button onclick="closeContactPicker()" style="position:absolute; top:16px; right:18px; background:rgba(0,0,0,0.06); border:none; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; color:#555; display:flex; align-items:center; justify-content:center;" aria-label="Tutup">&times;</button>
             <div style="text-align:center; margin-bottom:20px;">
                 <div style="width:54px;height:54px;background:linear-gradient(135deg,#E67E22,#D35400);border-radius:18px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;margin-bottom:12px;box-shadow:0 8px 20px rgba(230,126,34,0.3);"><i class="fab fa-whatsapp"></i></div>
                 <h5 style="font-weight:700; margin:0 0 4px; color:#222; font-size:1.1rem;">Hubungi Tim Marketing</h5>
@@ -193,6 +145,7 @@
             var card = document.createElement("a");
             card.href = "https://wa.me/" + a.phone + "?text=" + text;
             card.target = "_blank";
+            card.rel = "noopener noreferrer";
             card.style.cssText = "display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:18px;border:1.5px solid rgba(230,126,34,0.12);text-decoration:none;transition:all 0.25s ease;background:#fff;";
             card.innerHTML = "<div style='width:42px;height:42px;background:linear-gradient(135deg,#E67E22,#D35400);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;box-shadow:0 4px 12px rgba(230,126,34,0.25);'><i class='fab fa-whatsapp'></i></div>" +
                 "<div style='flex:1;'><div style='font-weight:700;color:#222;font-size:0.95rem;'>" + a.name + "</div></div>" +

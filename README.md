@@ -1,58 +1,148 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏘️ Graha Permata Jingga
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Website perumahan modern Graha Permata Jingga** – *The Singapore of Situbondo*.
 
-## About Laravel
+Website company profile perumahan yang menampilkan informasi properti, fasilitas, lokasi, berita, promo, dan sistem kontak WhatsApp marketing terintegrasi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Komponen | Teknologi |
+|---|---|
+| **Framework** | Laravel 13 + PHP 8.3 |
+| **Admin Panel** | Filament 5 |
+| **Database** | SQLite |
+| **Frontend** | Bootstrap 5, GSAP, Swiper.js |
+| **Build Tool** | Vite + TailwindCSS (admin) |
+| **Deployment** | Railway |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📁 Struktur Project
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```
+grahapermatajingga-app/
+├── app/
+│   ├── Filament/          # Admin panel resources & widgets
+│   ├── Http/Controllers/  # Landing page controller
+│   ├── Models/            # Eloquent models
+│   ├── Notifications/     # Password reset notification
+│   └── Providers/         # Filament admin panel config
+├── config/                # Laravel configuration files
+├── database/
+│   ├── database.sqlite    # SQLite database file
+│   ├── migrations/        # Database migration files
+│   └── seeders/           # Data seeders
+├── public/
+│   └── static/            # Images, CSS, JS assets
+├── resources/views/
+│   ├── layouts/           # Master layout template
+│   ├── components/        # Navbar & Footer components
+│   └── *.blade.php        # Page views
+├── routes/
+│   └── web.php            # Web routes
+├── storage/               # Uploads, cache, logs
+├── nixpacks.toml          # Railway deployment config
+└── Procfile               # Process definition
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 🚀 Quick Start (Local Development)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Prerequisites
+- PHP 8.3+
+- Composer
+- Node.js 18+
+- NPM
 
-## Code of Conduct
+### Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+# 1. Clone repository
+git clone https://github.com/fazyraww/grahapermatajingga.git
+cd grahapermatajingga
 
-## Security Vulnerabilities
+# 2. Install dependencies
+composer install
+npm install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 3. Setup environment
+cp .env.example .env
+php artisan key:generate
 
-## License
+# 4. Setup database
+php artisan migrate --force
+php artisan db:seed --force
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 5. Create storage symlink
+php artisan storage:link
+
+# 6. Build frontend assets
+npm run build
+
+# 7. Start development server
+php artisan serve
+```
+
+Website akan tersedia di: `http://localhost:8000`
+
+Admin panel: `http://localhost:8000/admin`
+
+---
+
+## 🌐 Deploy ke Railway
+
+### Langkah-langkah:
+
+1. **Push ke GitHub**
+   ```bash
+   git add -A
+   git commit -m "Production ready"
+   git push origin main
+   ```
+
+2. **Buka [railway.app](https://railway.app/)** → Login dengan GitHub
+
+3. **New Project** → Deploy from GitHub Repo → Pilih `grahapermatajingga`
+
+4. **Tambahkan Environment Variables** di Railway Dashboard:
+   ```
+   APP_NAME=Graha Permata Jingga
+   APP_ENV=production
+   APP_KEY=base64:Lj17XfTTdyCRLMKddcdkEHxrxRzJOmwJgxrf4hweVf8=
+   APP_DEBUG=false
+   APP_URL=https://your-railway-domain.up.railway.app
+   APP_TIMEZONE=Asia/Jakarta
+   DB_CONNECTION=sqlite
+   SESSION_DRIVER=file
+   CACHE_STORE=file
+   QUEUE_CONNECTION=sync
+   FILESYSTEM_DISK=public
+   ADMIN_NAME=Administrator
+   ADMIN_EMAIL=admin@grahapermatajingga.com
+   ADMIN_PASSWORD=your-secure-password
+   ```
+
+5. Railway akan otomatis build & deploy
+
+---
+
+## 👤 Admin Panel
+
+Akses admin panel di `/admin`. Fitur tersedia:
+- 📝 Kelola halaman (Beranda, Tentang Kami, Lokasi, dll)
+- 🏠 Kelola cluster perumahan
+- 📰 Kelola berita & promo
+- 🎥 Kelola video
+- 🏢 Kelola fasilitas
+- ❓ Kelola FAQ
+- 🎯 Kelola popup promosi
+- 👥 Kelola user admin
+
+---
+
+## 📄 License
+
+Private project – All rights reserved © 2026 Graha Permata Jingga.
