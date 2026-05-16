@@ -30,10 +30,57 @@
             z-index: 2;
             text-align: center;
         }
+
+        .contact-agent-card {
+            margin-top: 28px;
+            padding: 28px;
+            border: 1px solid rgba(230, 126, 34, 0.16);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+        }
+
+        .contact-agent-label {
+            color: #E67E22;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .contact-agent-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 14px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: #E67E22;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .contact-agent-button:hover {
+            background: #D35400;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(230, 126, 34, 0.25);
+        }
     </style>
 @endpush
 
 @section('content')
+    @php
+        $pageContent = preg_replace(
+            '/<p>\s*<strong>\s*WhatsApp Marketing:\s*<\/strong>\s*<br\s*\/?>.*?<\/p>/is',
+            '',
+            $page->content ?? ''
+        );
+    @endphp
+
     <!-- Hero -->
     <section class="page-hero">
         <div class="page-hero-overlay"></div>
@@ -49,7 +96,18 @@
             <div class="row">
                 <div class="col-lg-12 reveal">
                     <div class="page-content-body" style="font-size: 1.1rem; line-height: 2; color: #444;">
-                        {!! $page->content !!}
+                        {!! $pageContent !!}
+                    </div>
+                    <div class="contact-agent-card">
+                        <div class="contact-agent-label">WhatsApp Marketing</div>
+                        <p class="mb-0" style="color: #555; line-height: 1.8;">
+                            Pilih salah satu agen marketing kami untuk konsultasi atau jadwal kunjungan lokasi.
+                        </p>
+                        <a href="#" class="contact-agent-button"
+                            onclick="showContactPicker('saya ingin menghubungi tim Graha Permata Jingga.'); return false;">
+                            <i class="fab fa-whatsapp"></i>
+                            Pilih Agen WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>

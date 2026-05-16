@@ -18,9 +18,15 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
+    protected static ?string $modelLabel = 'Halaman';
+
+    protected static ?string $pluralModelLabel = 'Halaman Website';
+
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
 
     protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

@@ -67,23 +67,14 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center align-items-lg-start mb-3">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-phone-alt mt-1 me-3" style="color: #E67E22;"></i>
-                        <div>
-                            <p class="fw-bold mb-0" style="font-size: 0.95rem; color: #ffffff;">082148779639</p>
-                            <p class="fw-bold mb-0" style="font-size: 0.95rem; color: #ffffff;">08124951887</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column align-items-center align-items-lg-start mb-3">
                     <div class="d-flex flex-column align-items-center align-items-lg-start">
-                        <div class="mb-2">
-                            <i class="fab fa-whatsapp me-2" style="color: #25D366; font-size: 1.2rem;"></i>
-                            <span
-                                style="color: #E67E22; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">WHATSAPP
-                                MARKETING</span>
+                        <div class="mb-2 d-flex align-items-center">
+                            <i class="fab fa-whatsapp me-2" style="color: #25D366; font-size: 1.5rem;"></i>
+                            <span style="color: #E67E22; font-size: 0.8rem; letter-spacing: 3px; font-weight: 700;">WHATSAPP MARKETING</span>
                         </div>
-                        <a href="#" onclick="showContactPicker('saya ingin menghubungi tim Graha Permata Jingga.'); return false;" class="text-white fw-bold text-decoration-none" style="font-size:1.1rem;">Pilih Agen &rsaquo;</a>
+                        <a href="#" onclick="showContactPicker('saya ingin menghubungi tim Graha Permata Jingga.'); return false;" class="text-white fw-bold text-decoration-none" style="font-size:1.1rem; padding: 10px 20px; border: 1px solid rgba(230,126,34,0.4); border-radius: 8px; transition: all 0.3s; margin-top: 5px; display: inline-block;" onmouseover="this.style.background='rgba(230,126,34,0.15)'" onmouseout="this.style.background='transparent'">
+                            Pilih Agen <i class="fas fa-chevron-right ms-1" style="font-size: 0.9rem; color: #E67E22;"></i>
+                        </a>
                     </div>
                 </div>
             </div>

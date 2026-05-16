@@ -108,9 +108,7 @@
         .nav-minimal:active,
         .nav-minimal.active {
             color: #E67E22 !important;
-        }
-
-        transform: translateX(5px);
+            transform: translateX(5px);
         }
 
         [aria-expanded="true"] .fa-chevron-down {

@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Auth\Pages\PasswordReset\RequestPasswordReset;
+use App\Filament\Widgets\AdminOverview;
+use App\Filament\Widgets\AdminQuickGuide;
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -11,7 +15,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -19,7 +22,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -30,37 +32,24 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->passwordReset(RequestPasswordReset::class)
+            ->brandName('Graha Permata Jingga')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Orange,
+                'gray' => Color::Zinc,
             ])
-            ->brandLogo(asset('static/image/logograha2.png'))
-            ->brandLogoHeight('7rem')
+            ->darkMode()
+            ->defaultThemeMode(ThemeMode::Light)
+            ->favicon(asset('static/image/logo.png'))
+            ->brandLogo(asset('static/image/logo.png'))
+            ->brandLogoHeight('3.25rem')
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth('full')
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
             ->renderHook(
                 PanelsRenderHook::STYLES_AFTER,
-                fn(): string => Blade::render('
-                <style>
-                    .fi-simple-main { max-width: 30rem !important; margin: 0 auto; }
-                    
-                    /* Beri ruang agar logo besar tidak terpotong */
-                    .fi-sidebar-header { 
-                        height: auto !important; 
-                        min-height: 6rem !important; 
-                        padding-top: 1.5rem !important;
-                        padding-bottom: 1rem !important;
-                        align-items: flex-start !important;
-                    }
-                    
-                    /* Posisikan logo sedikit turun ke bawah */
-                    .fi-logo { 
-                        display: flex !important; 
-                        align-items: center !important; 
-                        margin-top: 10px !important;
-                    }
-                    
-                    .fi-logo img {
-                        object-fit: contain !important;
-                    }
-                </style>')
+                fn(): string => view('filament.admin-theme')->render()
             )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -69,6 +58,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
+                AdminOverview::class,
+                AdminQuickGuide::class,
                 AccountWidget::class,
             ])
             ->middleware([

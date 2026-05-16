@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Cluster;
-use App\Models\Post;
 use App\Models\Faq;
-use Illuminate\Http\Request;
+use App\Models\Page;
+use App\Models\Popup;
+use App\Models\Post;
 
 class LandingController extends Controller
 {
     public function index()
     {
-        $beranda = \App\Models\Page::firstOrCreate(
-            ['slug' => 'beranda'],
-            [
+        $beranda = Page::where('slug', 'beranda')->first()
+            ?? new Page([
                 'title' => 'Beranda',
+                'slug' => 'beranda',
                 'content' => 'Sebuah mahakarya kota modern masa depan yang menyatukan hunian eksklusif, fasilitas kelas dunia, dan lokasi paling strategis sebagai pusat pertumbuhan baru di Panarukan.',
                 'extra_data' => [
                     'stats' => [
@@ -31,15 +31,14 @@ class LandingController extends Controller
                     ],
                     'brochure_text' => 'DAPATKAN PENAWARAN EKSKLUSIF DARI KAMI'
                 ]
-            ]
-        );
+            ]);
 
         return view('index', [
             'page' => $beranda,
             'clusters' => Cluster::where('is_active', true)->get(),
             'faqs' => Faq::orderBy('order')->get(),
             'posts' => Post::latest()->take(3)->get(),
-            'popup' => \App\Models\Popup::where('is_active', true)->first(),
+            'popup' => Popup::where('is_active', true)->first(),
         ]);
     }
 }

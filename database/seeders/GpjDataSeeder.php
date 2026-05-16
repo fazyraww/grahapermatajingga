@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Cluster;
 
@@ -45,6 +45,14 @@ class GpjDataSeeder extends Seeder
         }
 
         // Data Cluster
+        $category = Category::updateOrCreate(
+            ['slug' => 'hunian'],
+            [
+                'name' => 'Hunian',
+                'description' => 'Kategori hunian Graha Permata Jingga.',
+            ]
+        );
+
         $clusters = [
             [
                 'name' => 'Rumah Komersil',
@@ -67,7 +75,10 @@ class GpjDataSeeder extends Seeder
         ];
 
         foreach ($clusters as $cluster) {
-            Cluster::firstOrCreate(['slug' => $cluster['slug']], $cluster);
+            Cluster::updateOrCreate(
+                ['slug' => $cluster['slug']],
+                $cluster + ['category_id' => $category->id]
+            );
         }
     }
 }

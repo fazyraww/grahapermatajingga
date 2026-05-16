@@ -12,6 +12,89 @@
     --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Local Font Awesome fallback for offline/CDN failures. */
+html.fa-fallback-active .fas,
+html.fa-fallback-active .far,
+html.fa-fallback-active .fab {
+    display: inline-block;
+    font-family: var(--font-sans, Arial, sans-serif) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    text-rendering: auto;
+    vertical-align: -0.08em;
+}
+
+html.fa-fallback-active .fas::before,
+html.fa-fallback-active .far::before,
+html.fa-fallback-active .fab::before {
+    display: inline-block;
+    min-width: 1em;
+    text-align: center;
+}
+
+html.fa-fallback-active .fa-bars::before { content: "\2630"; }
+html.fa-fallback-active .fa-times::before { content: "\00D7"; }
+html.fa-fallback-active .fa-chevron-down::before { content: "\25BE"; }
+html.fa-fallback-active .fa-chevron-right::before { content: "\203A"; }
+html.fa-fallback-active .fa-check-circle::before { content: "\2713"; }
+html.fa-fallback-active .fa-phone-alt::before { content: "\260E"; }
+html.fa-fallback-active .fa-bolt::before { content: "\26A1"; }
+html.fa-fallback-active .fa-home::before { content: "\2302"; }
+html.fa-fallback-active .fa-border-all::before,
+html.fa-fallback-active .fa-border-style::before,
+html.fa-fallback-active .fa-th::before { content: "\25A6"; }
+html.fa-fallback-active .fa-layer-group::before { content: "\25A4"; }
+html.fa-fallback-active .fa-expand-arrows-alt::before { content: "\2194"; }
+html.fa-fallback-active .fa-search-plus::before { content: "+"; }
+html.fa-fallback-active .fa-search-minus::before { content: "-"; }
+html.fa-fallback-active .fa-sync-alt::before { content: "\21BB"; }
+html.fa-fallback-active .fa-video::before,
+html.fa-fallback-active .fa-youtube::before { content: "\25B6"; }
+html.fa-fallback-active .fa-facebook-f::before { content: "f"; }
+html.fa-fallback-active .fa-instagram::before { content: "IG"; font-size: 0.72em; letter-spacing: -0.05em; }
+html.fa-fallback-active .fa-tiktok::before { content: "\266B"; }
+html.fa-fallback-active .fa-whatsapp::before { content: "WA"; font-size: 0.72em; letter-spacing: -0.08em; min-width: 1.25em; }
+
+html.fa-fallback-active .fa-bed::before,
+html.fa-fallback-active .fa-car::before,
+html.fa-fallback-active .fa-tree::before,
+html.fa-fallback-active .fa-shower::before,
+html.fa-fallback-active .fa-toilet::before,
+html.fa-fallback-active .fa-tint::before,
+html.fa-fallback-active .fa-utensils::before,
+html.fa-fallback-active .fa-couch::before,
+html.fa-fallback-active .fa-door-open::before,
+html.fa-fallback-active .fa-hammer::before,
+html.fa-fallback-active .fa-hospital::before,
+html.fa-fallback-active .fa-shopping-cart::before,
+html.fa-fallback-active .fa-calendar-alt::before,
+html.fa-fallback-active .fa-clock::before,
+html.fa-fallback-active .fa-map-marker-alt::before,
+html.fa-fallback-active .fa-map-marked-alt::before,
+html.fa-fallback-active .fa-image::before {
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", var(--font-sans, Arial, sans-serif) !important;
+    font-weight: 400 !important;
+}
+
+html.fa-fallback-active .fa-bed::before { content: "\1F6CF"; }
+html.fa-fallback-active .fa-car::before { content: "\1F697"; }
+html.fa-fallback-active .fa-tree::before { content: "\1F333"; }
+html.fa-fallback-active .fa-shower::before { content: "\1F6BF"; }
+html.fa-fallback-active .fa-toilet::before { content: "\1F6BD"; }
+html.fa-fallback-active .fa-tint::before { content: "\1F4A7"; }
+html.fa-fallback-active .fa-utensils::before { content: "\1F374"; }
+html.fa-fallback-active .fa-couch::before { content: "\1F6CB"; }
+html.fa-fallback-active .fa-door-open::before { content: "\1F6AA"; }
+html.fa-fallback-active .fa-hammer::before { content: "\1F528"; }
+html.fa-fallback-active .fa-hospital::before { content: "\1F3E5"; }
+html.fa-fallback-active .fa-shopping-cart::before { content: "\1F6D2"; }
+html.fa-fallback-active .fa-calendar-alt::before { content: "\1F4C5"; }
+html.fa-fallback-active .fa-clock::before { content: "\1F551"; }
+html.fa-fallback-active .fa-map-marker-alt::before { content: "\1F4CD"; }
+html.fa-fallback-active .fa-map-marked-alt::before { content: "\1F5FA"; }
+html.fa-fallback-active .fa-image::before { content: "\1F5BC"; }
+
 body {
     font-family: var(--font-sans);
     color: var(--text-dark);
@@ -130,7 +213,6 @@ html {
 
 [aria-expanded="true"] .fa-chevron-down {
     transform: rotate(180deg);
-}
 }
 
 /* --- Hero Section with Ken Burns --- */
@@ -468,4 +550,3 @@ body.modal-open .wa-container,
     .hero-title { font-size: 3rem; }
     .section-title { font-size: 2.2rem; }
 }
-
