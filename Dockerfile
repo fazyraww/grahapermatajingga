@@ -30,10 +30,11 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libicu-dev \
     libpq-dev \
+    libsqlite3-dev \
     zip \
     unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd intl zip \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite mbstring exif pcntl bcmath gd intl zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -58,23 +59,32 @@ COPY --from=frontend /app/public/build ./public/build
 # Dump autoload with full source available
 RUN composer dump-autoload --optimize --no-scripts
 
-# Create required directories
+# Create required directories & set permissions
 RUN mkdir -p storage/logs \
     storage/framework/cache/data \
     storage/framework/sessions \
     storage/framework/views \
     bootstrap/cache \
-    database
+    database \
+    && chmod -R 775 storage bootstrap/cache
 
-# Set permissions
-RUN chmod -R 775 storage bootstrap/cache
+# Create SQLite database if it doesn't exist
+RUN touch database/database.sqlite
 
-# Expose port (Railway provides PORT env variable)
+# Copy and prepare entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Default environment variables for production
+ENV APP_ENV=production
+ENV APP_DEBUG=false
+ENV LOG_CHANNEL=stderr
+ENV SESSION_DRIVER=file
+ENV CACHE_STORE=file
+ENV QUEUE_CONNECTION=sync
+
+# Expose port
 EXPOSE 8080
 
-# Start script: run migrations + storage link + optimize + serve
-CMD sh -c "\
-    php artisan migrate --force || true && \
-    php artisan storage:link || true && \
-    php artisan optimize && \
-    php -S 0.0.0.0:\${PORT:-8080} server.php"
+# Use the entrypoint script
+ENTRYPOINT ["docker-entrypoint.sh"]
