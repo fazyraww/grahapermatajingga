@@ -1,3 +1,22 @@
+# ============================
+# Stage 1: Build frontend assets
+# ============================
+FROM node:20-alpine AS frontend
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY vite.config.js ./
+COPY resources ./resources
+COPY public ./public
+
+RUN npm run build
+
+# ============================
+# Stage 2: PHP application
+# ============================
 FROM php:8.3-cli
 
 # Install system dependencies
@@ -14,46 +33,49 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     zip \
     unzip \
-    nodejs \
-    npm \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd intl zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /app
 
-# Copy composer files first for caching
+# Copy composer files first (Docker layer caching)
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies
+# Install PHP dependencies (no-dev for production)
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
-# Copy package files for Node
-COPY package.json package-lock.json ./
-
-# Install Node dependencies and build assets
-RUN npm ci && npm run build
-
-# Copy the rest of the application
+# Copy the full application source
 COPY . .
 
-# Re-run composer dump-autoload after full source is available
-RUN composer dump-autoload --optimize
+# Copy built frontend assets from Stage 1
+COPY --from=frontend /app/public/build ./public/build
 
-# Create SQLite database file if needed
-RUN mkdir -p database && touch database/database.sqlite
+# Dump autoload with full source available
+RUN composer dump-autoload --optimize --no-scripts
 
-# Create storage symlink and cache config
-RUN php artisan storage:link || true
-RUN php artisan optimize || true
+# Create required directories
+RUN mkdir -p storage/logs \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    bootstrap/cache \
+    database
 
-# Expose port (Railway sets PORT env variable)
-EXPOSE ${PORT:-8080}
+# Set permissions
+RUN chmod -R 775 storage bootstrap/cache
 
-# Start the application
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+# Expose port (Railway provides PORT env variable)
+EXPOSE 8080
+
+# Start script: run migrations + storage link + optimize + serve
+CMD sh -c "\
+    php artisan migrate --force || true && \
+    php artisan storage:link || true && \
+    php artisan optimize && \
+    php artisan serve --host=0.0.0.0 --port=\${PORT:-8080}"
