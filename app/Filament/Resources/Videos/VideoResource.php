@@ -18,9 +18,15 @@ class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
 
+    protected static ?string $modelLabel = 'Video';
+
+    protected static ?string $pluralModelLabel = 'Video';
+
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-video-camera';
 
     protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {

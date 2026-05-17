@@ -36,11 +36,11 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset(RequestPasswordReset::class)
             ->brandName('Graha Permata Jingga')
             ->colors([
-                'primary' => Color::Orange,
-                'gray' => Color::Zinc,
+                'primary' => Color::hex('#b48142'),
+                'gray' => Color::Taupe,
             ])
             ->darkMode()
-            ->defaultThemeMode(ThemeMode::Light)
+            ->defaultThemeMode(ThemeMode::System)
             ->favicon(asset('static/image/logo.png'))
             ->brandLogo(fn(): HtmlString => new HtmlString(
                 '<span class="gpj-brand-logo">' .

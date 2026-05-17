@@ -16,9 +16,9 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class AdminOverview extends StatsOverviewWidget
 {
-    protected ?string $heading = 'Ringkasan Admin Website';
+    protected ?string $heading = 'Ringkasan Operasi';
 
-    protected ?string $description = 'Status konten yang aktif dan siap tampil di website Graha Permata Jingga.';
+    protected ?string $description = 'Status konten, unit, media, dan campaign yang siap tampil di website Graha Permata Jingga.';
 
     protected int | array | null $columns = [
         'default' => 1,
@@ -38,7 +38,7 @@ class AdminOverview extends StatsOverviewWidget
             Stat::make('Kategori Produk', Category::count())
                 ->description('Pengelompokan produk perumahan')
                 ->descriptionIcon(Heroicon::RectangleStack)
-                ->color('gray')
+                ->color('info')
                 ->url(route('filament.admin.resources.categories.index')),
 
             Stat::make('Unit Aktif', Cluster::where('is_active', true)->count())
@@ -50,7 +50,7 @@ class AdminOverview extends StatsOverviewWidget
             Stat::make('Fasilitas Aktif', Facility::where('is_active', true)->count())
                 ->description('Fasilitas yang ditampilkan ke pengunjung')
                 ->descriptionIcon(Heroicon::Sparkles)
-                ->color('primary')
+                ->color('success')
                 ->url(route('filament.admin.resources.facilities.index')),
 
             Stat::make('Berita & Promo', Post::count())
@@ -74,7 +74,7 @@ class AdminOverview extends StatsOverviewWidget
             Stat::make('Popup Aktif', Popup::where('is_active', true)->count())
                 ->description(Popup::count() . ' popup promo tersimpan')
                 ->descriptionIcon(Heroicon::Bell)
-                ->color(Popup::where('is_active', true)->exists() ? 'warning' : 'gray')
+                ->color(Popup::where('is_active', true)->exists() ? 'warning' : 'info')
                 ->url(route('filament.admin.resources.popups.index')),
         ];
     }

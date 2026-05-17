@@ -18,9 +18,15 @@ class PopupResource extends Resource
 {
     protected static ?string $model = Popup::class;
 
+    protected static ?string $modelLabel = 'Popup Promo';
+
+    protected static ?string $pluralModelLabel = 'Popup Promo';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBell;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Marketing';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {
