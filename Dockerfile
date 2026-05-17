@@ -8,9 +8,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-COPY vite.config.js ./
-COPY resources ./resources
-COPY public ./public
+# Copy full source so Vite can resolve all entry modules
+COPY . .
 
 RUN npm run build
 
